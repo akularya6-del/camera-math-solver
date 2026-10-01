@@ -1,0 +1,502 @@
+[
+  {
+    "number": 1,
+    "text_html": "Let <em>f</em> : ℝ → ℝ be defined by <em>f</em>(<em>x</em>) = 3<em>x</em> + 5. Then <em>f</em> is:",
+    "options_html": [
+      "One-one but not onto",
+      "Onto but not one-one",
+      "Both one-one and onto (bijective)",
+      "Neither one-one nor onto"
+    ]
+  },
+  {
+    "number": 2,
+    "text_html": "The relation <em>R</em> on the set <em>A</em> = {1, 2, 3} defined by <em>R</em> = {(1,1),(2,2),(3,3),(1,2),(2,1)} is:",
+    "options_html": [
+      "Reflexive and symmetric but not transitive",
+      "Reflexive, symmetric and transitive (equivalence)",
+      "Reflexive and transitive but not symmetric",
+      "Symmetric and transitive but not reflexive"
+    ]
+  },
+  {
+    "number": 3,
+    "text_html": "If <em>f</em>(<em>x</em>) = <em>x</em>² and <em>g</em>(<em>x</em>) = √<em>x</em>, then <em>g</em>(<em>f</em>(<em>x</em>)) is equal to:",
+    "options_html": [
+      "|<em>x</em>|",
+      "<em>x</em>",
+      "<em>x</em>²",
+      "1/<em>x</em>"
+    ]
+  },
+  {
+    "number": 4,
+    "text_html": "The principal value of sin⁻¹(sin 7π/6) is:",
+    "options_html": [
+      "7π/6",
+      "–π/6",
+      "π/6",
+      "5π/6"
+    ]
+  },
+  {
+    "number": 5,
+    "text_html": "tan⁻¹(1) + cos⁻¹(–1/2) + sin⁻¹(–1/2) equals:",
+    "options_html": [
+      "π",
+      "3π/4",
+      "5π/12",
+      "7π/12"
+    ]
+  },
+  {
+    "number": 6,
+    "text_html": "If sin⁻¹(<em>x</em>) + sin⁻¹(<em>y</em>) = π/2, then <em>x</em>² + <em>y</em>² equals:",
+    "options_html": [
+      "0",
+      "1/2",
+      "1",
+      "2"
+    ]
+  },
+  {
+    "number": 7,
+    "text_html": "If <em>A</em> = <table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>2</td><td style='border:1px solid #333;padding:2px 6px;'>3</td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>1</td><td style='border:1px solid #333;padding:2px 6px;'>4</td></tr></table> and <em>B</em> = <table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>1</td><td style='border:1px solid #333;padding:2px 6px;'>−1</td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>0</td><td style='border:1px solid #333;padding:2px 6px;'>2</td></tr></table>, then the element in row 1, column 2 of <em>AB</em> is:",
+    "options_html": [
+      "4",
+      "5",
+      "7",
+      "3"
+    ]
+  },
+  {
+    "number": 8,
+    "text_html": "If a matrix has 18 elements, which of the following cannot be the order of the matrix?",
+    "options_html": [
+      "3 × 6",
+      "1 × 18",
+      "9 × 2",
+      "4 × 5"
+    ]
+  },
+  {
+    "number": 9,
+    "text_html": "For the matrix <em>A</em> = <table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>1</td><td style='border:1px solid #333;padding:2px 6px;'>2</td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>3</td><td style='border:1px solid #333;padding:2px 6px;'>4</td></tr></table>, the matrix <em>A</em> + <em>A</em><sup>T</sup> is symmetric. The value of its (1,2) entry is:",
+    "options_html": [
+      "5",
+      "4",
+      "3",
+      "6"
+    ]
+  },
+  {
+    "number": 10,
+    "text_html": "If |<em>A</em>| = 5 and <em>A</em> is a 3 × 3 matrix, then |adj(<em>A</em>)| equals:",
+    "options_html": [
+      "5",
+      "25",
+      "125",
+      "15"
+    ]
+  },
+  {
+    "number": 11,
+    "text_html": "If det<table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>2</td><td style='border:1px solid #333;padding:2px 6px;'><em>x</em></td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>3</td><td style='border:1px solid #333;padding:2px 6px;'>5</td></tr></table> = 4, then the value of <em>x</em> is:",
+    "options_html": [
+      "2/3",
+      "4/3",
+      "1",
+      "2"
+    ]
+  },
+  {
+    "number": 12,
+    "text_html": "If <em>A</em> is a square matrix such that <em>A</em>² = <em>A</em>, then (I + <em>A</em>)³ − 7<em>A</em> equals:",
+    "options_html": [
+      "A",
+      "I − A",
+      "I",
+      "0"
+    ]
+  },
+  {
+    "number": 13,
+    "text_html": "The function <em>f</em>(<em>x</em>) = |<em>x</em>| is:",
+    "options_html": [
+      "Continuous and differentiable everywhere",
+      "Continuous everywhere but not differentiable at <em>x</em> = 0",
+      "Differentiable everywhere but not continuous at <em>x</em> = 0",
+      "Neither continuous nor differentiable at <em>x</em> = 0"
+    ]
+  },
+  {
+    "number": 14,
+    "text_html": "If <em>y</em> = <em>e</em><sup><em>x</em> sin <em>x</em></sup>, then dy/dx is:",
+    "options_html": [
+      "<em>e</em><sup><em>x</em> sin<em>x</em></sup>(sin<em>x</em> + <em>x</em>cos<em>x</em>)",
+      "<em>e</em><sup><em>x</em></sup>(sin<em>x</em> + cos<em>x</em>)",
+      "<em>e</em><sup>sin<em>x</em></sup>cos<em>x</em>",
+      "<em>x</em><em>e</em><sup><em>x</em></sup>cos<em>x</em>"
+    ]
+  },
+  {
+    "number": 15,
+    "text_html": "If <em>y</em> = sin(log<em>x</em>), then d²y/dx² + dy/dx · (1/<em>x</em>) equals:",
+    "options_html": [
+      "0",
+      "–y/<em>x</em>²",
+      "y/<em>x</em>²",
+      "cos(log<em>x</em>)/<em>x</em>²"
+    ]
+  },
+  {
+    "number": 16,
+    "text_html": "The slope of the tangent to the curve <em>y</em> = <em>x</em>³ − <em>x</em> at the point where <em>x</em> = 2 is:",
+    "options_html": [
+      "11",
+      "12",
+      "10",
+      "13"
+    ]
+  },
+  {
+    "number": 17,
+    "text_html": "The function <em>f</em>(<em>x</em>) = 2<em>x</em>³ − 9<em>x</em>² + 12<em>x</em> + 1 is strictly increasing on:",
+    "options_html": [
+      "(−∞, 1) ∪ (2, ∞)",
+      "(1, 2)",
+      "(0, ∞)",
+      "(−∞, ∞)"
+    ]
+  },
+  {
+    "number": 18,
+    "text_html": "The maximum value of <em>f</em>(<em>x</em>) = sin<em>x</em> + cos<em>x</em> on [0, π] is:",
+    "options_html": [
+      "1",
+      "√2",
+      "2",
+      "√3/2"
+    ]
+  },
+  {
+    "number": 19,
+    "text_html": "∫ (2<em>x</em> + 3) / (<em>x</em>² + 3<em>x</em> + 5) d<em>x</em> equals:",
+    "options_html": [
+      "log|<em>x</em>² + 3<em>x</em> + 5| + C",
+      "2log|<em>x</em>² + 3<em>x</em> + 5| + C",
+      "(1/2)log|<em>x</em>² + 3<em>x</em> + 5| + C",
+      "1/(<em>x</em>² + 3<em>x</em> + 5) + C"
+    ]
+  },
+  {
+    "number": 20,
+    "text_html": "∫₀<sup>π/2</sup> sin²<em>x</em> d<em>x</em> equals:",
+    "options_html": [
+      "π/4",
+      "π/2",
+      "0",
+      "1"
+    ]
+  },
+  {
+    "number": 21,
+    "text_html": "∫ e<sup><em>x</em></sup>(sin<em>x</em> + cos<em>x</em>) d<em>x</em> equals:",
+    "options_html": [
+      "e<sup><em>x</em></sup>sin<em>x</em> + C",
+      "e<sup><em>x</em></sup>cos<em>x</em> + C",
+      "e<sup><em>x</em></sup>(sin<em>x</em> − cos<em>x</em>) + C",
+      "2e<sup><em>x</em></sup>sin<em>x</em> + C"
+    ]
+  },
+  {
+    "number": 22,
+    "text_html": "The area enclosed between <em>y</em> = <em>x</em>² and <em>y</em> = <em>x</em> (in the first quadrant) is:",
+    "options_html": [
+      "1/6 sq. units",
+      "1/3 sq. units",
+      "1/2 sq. units",
+      "2/3 sq. units"
+    ]
+  },
+  {
+    "number": 23,
+    "text_html": "The integrating factor of the differential equation dy/dx + (<em>y</em>/<em>x</em>) = <em>x</em>² is:",
+    "options_html": [
+      "<em>x</em>",
+      "1/<em>x</em>",
+      "<em>x</em>²",
+      "log<em>x</em>"
+    ]
+  },
+  {
+    "number": 24,
+    "text_html": "The order and degree of the differential equation [1 + (dy/dx)²]<sup>3/2</sup> = d²y/dx² are respectively:",
+    "options_html": [
+      "2 and 3",
+      "2 and 2",
+      "1 and 3",
+      "3 and 2"
+    ]
+  },
+  {
+    "number": 25,
+    "text_html": "The general solution of dy/dx = <em>e</em><sup><em>x</em>+<em>y</em></sup> is:",
+    "options_html": [
+      "<em>e</em><sup>−<em>y</em></sup> + <em>e</em><sup><em>x</em></sup> = C",
+      "<em>e</em><sup><em>x</em></sup> − <em>e</em><sup>−<em>y</em></sup> = C",
+      "<em>e</em><sup><em>x</em></sup> + <em>e</em><sup><em>y</em></sup> = C",
+      "e<sup>−<em>y</em></sup> = e<sup><em>x</em></sup> + C"
+    ]
+  },
+  {
+    "number": 26,
+    "text_html": "If <strong>a⃗</strong> = 2<strong>î</strong> − 3<strong>ĵ</strong> + <strong>k̂</strong> and <strong>b⃗</strong> = <strong>î</strong> + 2<strong>ĵ</strong> − 3<strong>k̂</strong>, then <strong>a⃗</strong> · <strong>b⃗</strong> is:",
+    "options_html": [
+      "−6",
+      "−8",
+      "−5",
+      "0"
+    ]
+  },
+  {
+    "number": 27,
+    "text_html": "The projection of <strong>a⃗</strong> = 2<strong>î</strong> + 3<strong>ĵ</strong> + 2<strong>k̂</strong> on <strong>b⃗</strong> = <strong>î</strong> + 2<strong>ĵ</strong> + 2<strong>k̂</strong> is:",
+    "options_html": [
+      "10/3",
+      "4/3",
+      "14/3",
+      "3"
+    ]
+  },
+  {
+    "number": 28,
+    "text_html": "If |<strong>a⃗</strong>| = 3, |<strong>b⃗</strong>| = 4 and <strong>a⃗</strong> · <strong>b⃗</strong> = 6, then the angle between <strong>a⃗</strong> and <strong>b⃗</strong> is:",
+    "options_html": [
+      "π/6",
+      "π/3",
+      "π/4",
+      "π/2"
+    ]
+  },
+  {
+    "number": 29,
+    "text_html": "<strong>a⃗</strong> × <strong>b⃗</strong> = <strong>b⃗</strong> × <strong>a⃗</strong> is:",
+    "options_html": [
+      "Always true",
+      "True only when <strong>a⃗</strong> = <strong>b⃗</strong>",
+      "Never true; <strong>a⃗</strong> × <strong>b⃗</strong> = −(<strong>b⃗</strong> × <strong>a⃗</strong>)",
+      "True when they are parallel"
+    ]
+  },
+  {
+    "number": 30,
+    "text_html": "The area of the triangle with vertices A(1,1,1), B(1,2,3) and C(2,3,1) using cross product is:",
+    "options_html": [
+      "√17/2",
+      "√21/2",
+      "√14/2",
+      "√10/2"
+    ]
+  },
+  {
+    "number": 31,
+    "text_html": "The direction cosines of the line joining (1, 0, 0) and (0, 1, 0) are:",
+    "options_html": [
+      "(−1/√2, 1/√2, 0)",
+      "(1, −1, 0)",
+      "(1/√2, −1/√2, 0)",
+      "(0, 0, 1)"
+    ]
+  },
+  {
+    "number": 32,
+    "text_html": "The equation of the line passing through (2, −1, 3) with direction ratios (1, 2, −2) in symmetric form is:",
+    "options_html": [
+      "(x−2)/1 = (y+1)/2 = (z−3)/(−2)",
+      "(x+2)/1 = (y−1)/2 = (z+3)/(−2)",
+      "(x−2)/2 = (y+1)/1 = (z−3)/3",
+      "None of these"
+    ]
+  },
+  {
+    "number": 33,
+    "text_html": "The angle between the lines with direction ratios (1, 1, 0) and (0, 1, 1) is:",
+    "options_html": [
+      "60°",
+      "45°",
+      "90°",
+      "30°"
+    ]
+  },
+  {
+    "number": 34,
+    "text_html": "The distance from the point (3, −5, 12) to the <em>xy</em>-plane is:",
+    "options_html": [
+      "3",
+      "5",
+      "12",
+      "√178"
+    ]
+  },
+  {
+    "number": 35,
+    "text_html": "The equation of the plane passing through (1, 2, 3) with normal vector (2, −1, 1) is:",
+    "options_html": [
+      "2<em>x</em> − <em>y</em> + <em>z</em> = 3",
+      "2<em>x</em> − <em>y</em> + <em>z</em> = 0",
+      "<em>x</em> + 2<em>y</em> + 3<em>z</em> = 14",
+      "2<em>x</em> − <em>y</em> + <em>z</em> + 3 = 0"
+    ]
+  },
+  {
+    "number": 36,
+    "text_html": "In a Linear Programming Problem, the feasible region is always:",
+    "options_html": [
+      "A circle",
+      "A convex polygon (or unbounded convex set)",
+      "A concave region",
+      "A single point"
+    ]
+  },
+  {
+    "number": 37,
+    "text_html": "The corner points of the feasible region of an LPP are (0,0), (4,0), (3,2) and (0,3). The maximum value of <em>Z</em> = 3<em>x</em> + 5<em>y</em> is:",
+    "options_html": [
+      "12",
+      "18",
+      "19",
+      "15"
+    ]
+  },
+  {
+    "number": 38,
+    "text_html": "Which of the following is NOT a necessary condition for a Linear Programming Problem?",
+    "options_html": [
+      "Objective function must be linear",
+      "Constraints must be linear inequalities",
+      "Decision variables must be non-negative",
+      "Optimal solution must occur at the origin"
+    ]
+  },
+  {
+    "number": 39,
+    "text_html": "Two dice are thrown simultaneously. The probability of getting a sum of 9 is:",
+    "options_html": [
+      "1/9",
+      "4/36",
+      "1/6",
+      "5/36"
+    ]
+  },
+  {
+    "number": 40,
+    "text_html": "If P(A) = 1/3, P(B) = 1/4 and A and B are independent events, then P(A ∩ B) equals:",
+    "options_html": [
+      "7/12",
+      "1/12",
+      "5/12",
+      "1/2"
+    ]
+  },
+  {
+    "number": 41,
+    "text_html": "A bag contains 4 red and 5 black balls. Two balls are drawn at random. The probability that both are red is:",
+    "options_html": [
+      "1/6",
+      "2/9",
+      "4/9",
+      "5/18"
+    ]
+  },
+  {
+    "number": 42,
+    "text_html": "Using Bayes' theorem: P(A) = 0.4, P(B|A) = 0.5, P(B|A′) = 0.2. Then P(A|B) equals:",
+    "options_html": [
+      "0.5",
+      "2/3",
+      "1/3",
+      "0.4"
+    ]
+  },
+  {
+    "number": 43,
+    "text_html": "The mean of a Binomial distribution B(n, p) is 6 and variance is 2. Then n and p are respectively:",
+    "options_html": [
+      "9 and 2/3",
+      "6 and 1/3",
+      "12 and 1/2",
+      "8 and 3/4"
+    ]
+  },
+  {
+    "number": 44,
+    "text_html": "If <em>f</em>(<em>x</em>) = k(<em>x</em> − <em>x</em>²) for 0 ≤ x ≤ 1 is a probability density function, then k equals:",
+    "options_html": [
+      "2",
+      "6",
+      "3",
+      "12"
+    ]
+  },
+  {
+    "number": 45,
+    "text_html": "∫ dx / (1 + x²) equals:",
+    "options_html": [
+      "tan⁻¹<em>x</em> + C",
+      "sin⁻¹<em>x</em> + C",
+      "sec⁻¹<em>x</em> + C",
+      "cot⁻¹<em>x</em> + C"
+    ]
+  },
+  {
+    "number": 46,
+    "text_html": "The value of ∫₋₁¹ <em>x</em> |<em>x</em>| d<em>x</em> is:",
+    "options_html": [
+      "0",
+      "2/3",
+      "−2/3",
+      "4/3"
+    ]
+  },
+  {
+    "number": 47,
+    "text_html": "If <em>f</em>(<em>x</em>) = (1 + cos²<em>x</em>) / sin²<em>x</em>, then <em>f</em> is:",
+    "options_html": [
+      "Continuous everywhere",
+      "Discontinuous at <em>x</em> = nπ",
+      "Discontinuous at <em>x</em> = nπ/2",
+      "Continuous for all <em>x</em> ∈ (0, π)"
+    ]
+  },
+  {
+    "number": 48,
+    "text_html": "If <em>A</em> and <em>B</em> are two events such that P(A ∪ B) = 3/4, P(A ∩ B) = 1/4, P(Ā) = 2/3, then P(B) is:",
+    "options_html": [
+      "1/3",
+      "5/12",
+      "7/12",
+      "2/3"
+    ]
+  },
+  {
+    "number": 49,
+    "text_html": "The number of all possible matrices of order 2 × 2 with each entry 0 or 1 is:",
+    "options_html": [
+      "8",
+      "12",
+      "16",
+      "6"
+    ]
+  },
+  {
+    "number": 50,
+    "text_html": "If <em>y</em> = (sin<em>x</em>)<sup>cos<em>x</em></sup>, then dy/dx is:",
+    "options_html": [
+      "(sin<em>x</em>)<sup>cos<em>x</em></sup>[cos<em>x</em>·cot<em>x</em> − sin<em>x</em>·log(sin<em>x</em>)]",
+      "(sin<em>x</em>)<sup>cos<em>x</em></sup>[cos²<em>x</em>/sin<em>x</em> − sin<em>x</em>·log(sin<em>x</em>)]",
+      "cos<em>x</em>·(sin<em>x</em>)<sup>cos<em>x</em>−1</sup>·cos<em>x</em>",
+      "(sin<em>x</em>)<sup>cos<em>x</em></sup>·cos<em>x</em>·cot<em>x</em>"
+    ]
+  }
+]

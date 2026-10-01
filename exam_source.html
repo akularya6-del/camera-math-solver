@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathematics Examination — Section A</title>
+<style>
+  :root {
+    --primary: #1a3c6e;
+    --secondary: #e87722;
+    --accent: #0078d4;
+    --bg: #f0f2f5;
+    --white: #ffffff;
+    --border: #c8cdd3;
+    --green: #2e7d32;
+    --red: #c62828;
+    --purple: #6a1b9a;
+    --yellow: #f9a825;
+    --gray: #78909c;
+    --light-gray: #eceff1;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    min-height: 100vh;
+    font-size: 14px;
+    color: #222;
+  }
+
+  /* ───── INSTRUCTION SCREEN ───── */
+  #instruction-screen {
+    background: var(--white);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .inst-header {
+    background: var(--primary);
+    color: white;
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .inst-header .logo-block { display: flex; align-items: center; gap: 14px; }
+  .inst-header .logo-circle {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--white); display: flex; align-items: center;
+    justify-content: center; font-size: 20px; font-weight: 900;
+    color: var(--primary);
+  }
+  .inst-header h1 { font-size: 18px; font-weight: 700; line-height: 1.3; }
+  .inst-header h2 { font-size: 13px; font-weight: 400; opacity: .85; }
+  .inst-header .exam-code { font-size: 13px; background: rgba(255,255,255,.15); padding: 6px 14px; border-radius: 4px; }
+
+  .inst-body { flex: 1; padding: 28px 40px; max-width: 960px; margin: 0 auto; width: 100%; }
+  .inst-body h3 { font-size: 17px; color: var(--primary); border-bottom: 2px solid var(--primary); padding-bottom: 8px; margin-bottom: 18px; }
+  .inst-body p { margin-bottom: 10px; line-height: 1.7; }
+  .inst-body ul { margin-left: 24px; margin-bottom: 14px; }
+  .inst-body ul li { margin-bottom: 6px; line-height: 1.6; }
+
+  .marking-table { width: 100%; border-collapse: collapse; margin: 14px 0 20px; }
+  .marking-table th, .marking-table td { border: 1px solid var(--border); padding: 8px 14px; text-align: center; font-size: 13px; }
+  .marking-table th { background: var(--primary); color: white; }
+  .marking-table tr:nth-child(even) td { background: #f9fafb; }
+
+  .legend-grid { display: flex; flex-wrap: wrap; gap: 14px; margin: 14px 0 20px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+  .legend-box { width: 28px; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; color: white; }
+
+  .consent-block { background: #fffde7; border: 1px solid #f9a825; border-radius: 6px; padding: 14px 18px; margin: 18px 0; }
+  .consent-block label { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 13.5px; line-height: 1.6; }
+  .consent-block input[type=checkbox] { margin-top: 3px; width: 16px; height: 16px; cursor: pointer; }
+
+  .start-btn {
+    display: block; margin: 20px auto 0;
+    background: var(--primary); color: white;
+    border: none; border-radius: 5px;
+    padding: 13px 48px; font-size: 15px; font-weight: 600;
+    cursor: pointer; transition: background .2s;
+    letter-spacing: .4px;
+  }
+  .start-btn:disabled { background: #aaa; cursor: not-allowed; }
+  .start-btn:not(:disabled):hover { background: #0f2a52; }
+
+  /* ───── EXAM SCREEN ───── */
+  #exam-screen { display: none; flex-direction: column; min-height: 100vh; }
+
+  .exam-header {
+    background: var(--primary); color: white;
+    padding: 8px 18px; display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100;
+  }
+  .exam-header .logo-sm { display: flex; align-items: center; gap: 10px; }
+  .exam-header .logo-sm .badge {
+    width: 38px; height: 38px; border-radius: 50%; background: white;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; color: var(--primary); font-size: 14px;
+  }
+  .exam-header .title-sm { font-size: 14px; font-weight: 600; }
+  .exam-header .title-sub { font-size: 11px; opacity: .8; }
+
+  .timer-block {
+    background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.3);
+    border-radius: 6px; padding: 6px 18px; text-align: center;
+  }
+  .timer-label { font-size: 10px; opacity: .8; letter-spacing: .5px; text-transform: uppercase; }
+  .timer-value { font-size: 22px; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: 2px; }
+  .timer-value.warning { color: #ffcc02; }
+  .timer-value.danger { color: #ff5252; animation: blink 1s step-end infinite; }
+  @keyframes blink { 50% { opacity: .4; } }
+
+  .candidate-info { font-size: 12px; text-align: right; opacity: .9; }
+
+  .exam-subbar {
+    background: #e8edf4; border-bottom: 2px solid #c5cdd8;
+    padding: 6px 18px; display: flex; align-items: center; gap: 16px;
+    font-size: 12.5px; font-weight: 600; color: var(--primary);
+  }
+  .section-tab {
+    padding: 5px 16px; border-radius: 4px 4px 0 0;
+    background: var(--white); border: 1px solid #c5cdd8; border-bottom: none;
+    font-size: 12.5px; color: var(--primary); font-weight: 600; cursor: pointer;
+  }
+  .section-tab.active { background: var(--primary); color: white; }
+  .q-count-info { margin-left: auto; color: #555; font-weight: 400; }
+
+  .exam-body { flex: 1; display: flex; overflow: hidden; }
+
+  /* ── Question Panel ── */
+  .question-panel {
+    flex: 1; padding: 0; display: flex; flex-direction: column;
+    overflow-y: auto; border-right: 1px solid var(--border);
+  }
+  .qp-header {
+    background: #f7f9fc; border-bottom: 1px solid var(--border);
+    padding: 8px 20px; display: flex; align-items: center; gap: 12px;
+  }
+  .q-number-badge {
+    background: var(--primary); color: white;
+    border-radius: 4px; padding: 4px 12px; font-size: 13px; font-weight: 700;
+  }
+  .qp-header span { font-size: 13px; color: #555; }
+  .marks-info { margin-left: auto; font-size: 12px; color: #666; background: #e8f5e9; padding: 3px 10px; border-radius: 12px; border: 1px solid #a5d6a7; }
+
+  .question-text {
+    padding: 20px 24px 14px;
+    font-size: 15px; line-height: 1.8; color: #1a1a1a;
+    border-bottom: 1px dashed var(--border);
+  }
+  .question-text .q-label { font-weight: 700; color: var(--primary); margin-right: 6px; }
+
+  .options-area { padding: 16px 24px; flex: 1; }
+  .option-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 11px 16px; margin-bottom: 10px; border-radius: 6px;
+    border: 1.5px solid var(--border); cursor: pointer;
+    transition: all .18s; background: white;
+  }
+  .option-item:hover { border-color: var(--accent); background: #f0f7ff; }
+  .option-item.selected { border-color: var(--accent); background: #e3f0ff; }
+  .option-item input[type=radio] { margin-top: 2px; accent-color: var(--accent); width: 16px; height: 16px; cursor: pointer; flex-shrink: 0; }
+  .option-label { font-weight: 700; color: var(--primary); min-width: 22px; }
+  .option-text { line-height: 1.6; font-size: 14px; }
+
+  .qp-footer {
+    border-top: 1px solid var(--border); background: #f7f9fc;
+    padding: 10px 20px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  }
+  .btn {
+    padding: 8px 18px; border-radius: 5px; border: 1.5px solid;
+    font-size: 13px; font-weight: 600; cursor: pointer; transition: all .15s;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .btn-save { background: var(--green); color: white; border-color: var(--green); }
+  .btn-save:hover { background: #1b5e20; }
+  .btn-mark { background: var(--purple); color: white; border-color: var(--purple); }
+  .btn-mark:hover { background: #4a148c; }
+  .btn-clear { background: white; color: #c00; border-color: #c00; }
+  .btn-clear:hover { background: #ffeaea; }
+  .btn-prev { background: white; color: var(--primary); border-color: var(--primary); }
+  .btn-prev:hover { background: #e8edf4; }
+  .btn-next { background: var(--secondary); color: white; border-color: var(--secondary); }
+  .btn-next:hover { background: #c45e10; }
+  .btn-submit-main { background: var(--primary); color: white; border-color: var(--primary); margin-left: auto; }
+  .btn-submit-main:hover { background: #0f2a52; }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    width: 260px; min-width: 220px; background: white;
+    display: flex; flex-direction: column; overflow-y: auto;
+    border-left: 1px solid var(--border);
+  }
+  .sidebar-header {
+    background: var(--primary); color: white;
+    padding: 10px 14px; font-size: 13px; font-weight: 600; text-align: center;
+  }
+
+  .palette-legend {
+    padding: 10px 12px; border-bottom: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .pl-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: #444; }
+  .pl-dot { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: white; }
+  .dot-not-visited { background: #9e9e9e; }
+  .dot-not-answered { background: #e53935; }
+  .dot-answered { background: #43a047; }
+  .dot-marked { background: var(--purple); }
+  .dot-marked-answered { background: var(--purple); border: 3px solid #43a047; }
+
+  .palette-grid {
+    padding: 12px; display: flex; flex-wrap: wrap; gap: 7px; flex: 1;
+  }
+  .palette-btn {
+    width: 36px; height: 36px; border-radius: 50%; border: none;
+    font-size: 12px; font-weight: 700; cursor: pointer;
+    color: white; transition: transform .1s, box-shadow .1s;
+    position: relative;
+  }
+  .palette-btn:hover { transform: scale(1.12); box-shadow: 0 2px 8px rgba(0,0,0,.25); }
+  .palette-btn.active-q { outline: 3px solid #ffcc02; outline-offset: 2px; }
+  .palette-btn.not-visited { background: #9e9e9e; }
+  .palette-btn.not-answered { background: #e53935; }
+  .palette-btn.answered { background: #43a047; }
+  .palette-btn.marked { background: var(--purple); }
+  .palette-btn.marked-answered { background: var(--purple); }
+  .palette-btn.marked-answered::after {
+    content: ''; position: absolute; bottom: -3px; right: -3px;
+    width: 12px; height: 12px; border-radius: 50%; background: #43a047;
+    border: 2px solid white;
+  }
+
+  .sidebar-summary {
+    border-top: 1px solid var(--border); padding: 10px 14px; font-size: 12px;
+  }
+  .summary-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .summary-row span:last-child { font-weight: 700; }
+
+  /* ───── RESULT SCREEN ───── */
+  #result-screen {
+    display: none; background: var(--bg);
+    min-height: 100vh; padding: 30px 20px;
+  }
+  .result-card {
+    max-width: 860px; margin: 0 auto;
+    background: white; border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.1); overflow: hidden;
+  }
+  .result-header {
+    background: var(--primary); color: white;
+    padding: 24px 30px; text-align: center;
+  }
+  .result-header h2 { font-size: 22px; margin-bottom: 4px; }
+  .result-header p { opacity: .85; font-size: 14px; }
+
+  .score-strip {
+    display: flex; justify-content: space-around;
+    padding: 24px 20px; background: #f7f9fc;
+    border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: 16px;
+  }
+  .score-item { text-align: center; }
+  .score-num { font-size: 32px; font-weight: 800; line-height: 1; }
+  .score-num.correct { color: var(--green); }
+  .score-num.wrong { color: var(--red); }
+  .score-num.skipped { color: var(--gray); }
+  .score-num.marks { color: var(--primary); }
+  .score-label { font-size: 12px; color: #666; margin-top: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: .4px; }
+
+  .percentile-bar-wrap { padding: 18px 30px; border-bottom: 1px solid var(--border); }
+  .percentile-bar-wrap h4 { margin-bottom: 10px; font-size: 14px; color: #333; }
+  .bar-bg { background: #e0e0e0; border-radius: 20px; height: 18px; overflow: hidden; }
+  .bar-fill { height: 100%; border-radius: 20px; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 1.5s ease; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; }
+  .bar-fill span { color: white; font-size: 11px; font-weight: 700; }
+
+  .review-table-wrap { padding: 20px 24px; }
+  .review-table-wrap h4 { margin-bottom: 12px; font-size: 15px; color: var(--primary); }
+  .review-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .review-table th { background: var(--primary); color: white; padding: 9px 12px; text-align: left; }
+  .review-table td { padding: 8px 12px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .review-table tr:nth-child(even) td { background: #f9fafb; }
+  .rt-correct { color: var(--green); font-weight: 700; }
+  .rt-wrong { color: var(--red); font-weight: 700; }
+  .rt-skip { color: var(--gray); font-weight: 700; }
+  .rt-badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 11px; font-weight: 700; }
+  .badge-c { background: #e8f5e9; color: var(--green); }
+  .badge-w { background: #ffebee; color: var(--red); }
+  .badge-s { background: #f5f5f5; color: var(--gray); }
+
+  .result-footer { padding: 18px 24px; text-align: center; border-top: 1px solid var(--border); }
+  .btn-retry { background: var(--primary); color: white; border: none; padding: 11px 36px; border-radius: 5px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background .2s; }
+  .btn-retry:hover { background: #0f2a52; }
+
+  /* ───── SUBMIT MODAL ───── */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,.55); z-index: 999;
+    align-items: center; justify-content: center;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal-box {
+    background: white; border-radius: 10px;
+    max-width: 440px; width: 90%; overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,.3);
+  }
+  .modal-head { background: var(--primary); color: white; padding: 16px 20px; font-weight: 700; font-size: 16px; }
+  .modal-body { padding: 20px 24px; font-size: 14px; line-height: 1.7; }
+  .modal-stats { background: #f7f9fc; border-radius: 6px; padding: 12px 16px; margin: 14px 0; font-size: 13px; }
+  .modal-stats div { display: flex; justify-content: space-between; margin-bottom: 6px; }
+  .modal-stats div:last-child { margin-bottom: 0; }
+  .modal-footer { padding: 14px 20px; display: flex; gap: 12px; justify-content: flex-end; border-top: 1px solid var(--border); }
+  .btn-cancel-modal { background: white; color: #333; border: 1.5px solid #ccc; padding: 9px 22px; border-radius: 5px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .btn-confirm-submit { background: #c62828; color: white; border: none; padding: 9px 22px; border-radius: 5px; font-size: 13px; font-weight: 600; cursor: pointer; }
+  .btn-confirm-submit:hover { background: #8e0000; }
+
+  /* Math rendering */
+  .math { font-style: italic; }
+  sup { font-size: .75em; }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .sidebar { display: none; }
+    .exam-subbar { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════
+     INSTRUCTION SCREEN
+═════════════════════════════════════ -->
+<div id="instruction-screen">
+  <div class="inst-header">
+    <div class="logo-block">
+      <div class="logo-circle">M</div>
+      <div>
+        <h1>Mathematics Examination — Section A</h1>
+        <h2>General Test | 2025–26 | Time: 60 Minutes | Maximum Marks: 200</h2>
+      </div>
+    </div>
+    <div class="exam-code">SET A — Code: MTH-2526-A</div>
+  </div>
+
+  <div class="inst-body">
+    <h3>General Instructions</h3>
+    <ul>
+      <li>This test contains <strong>50 questions</strong>. Each question carries <strong>5 marks</strong> for the correct answer.</li>
+      <li>For each incorrect response, <strong>1 mark will be deducted</strong> (negative marking).</li>
+      <li><strong>No marks</strong> are awarded or deducted for unattempted questions.</li>
+      <li>The clock is set at the server and the countdown timer at the top right corner of your screen will display the time remaining for you to complete the exam. When the clock reaches zero, the examination will end by itself.</li>
+      <li>Questions in this paper cover: Relations &amp; Functions, Inverse Trigonometry, Matrices, Determinants, Continuity &amp; Differentiability, Applications of Derivatives, Integrals, Differential Equations, Vectors, 3D Geometry, Linear Programming, and Probability.</li>
+      <li>Use the <strong>Question Palette</strong> on the right side to navigate between questions.</li>
+      <li>Use the <strong>Save &amp; Next</strong> button to save your response and go to the next question.</li>
+      <li>Use <strong>Mark for Review &amp; Next</strong> to flag a question and return to it later.</li>
+      <li>To change a previously saved answer, click the option and press Save &amp; Next again.</li>
+      <li>Once you click <strong>Submit</strong>, you will not be able to return to the exam.</li>
+    </ul>
+
+    <h3 style="margin-top:22px;">Marking Scheme</h3>
+    <table class="marking-table">
+      <tr>
+        <th>Response Type</th>
+        <th>Marks</th>
+      </tr>
+      <tr><td>Correct Answer</td><td style="color:var(--green);font-weight:700;">+5</td></tr>
+      <tr><td>Incorrect Answer</td><td style="color:var(--red);font-weight:700;">−1</td></tr>
+      <tr><td>Not Attempted</td><td>0</td></tr>
+    </table>
+
+    <h3>Question Palette Legend</h3>
+    <div class="legend-grid">
+      <div class="legend-item"><div class="legend-box" style="background:#9e9e9e;">1</div> Not Visited</div>
+      <div class="legend-item"><div class="legend-box" style="background:#e53935;">2</div> Not Answered</div>
+      <div class="legend-item"><div class="legend-box" style="background:#43a047;">3</div> Answered</div>
+      <div class="legend-item"><div class="legend-box" style="background:#6a1b9a;">4</div> Marked for Review</div>
+      <div class="legend-item"><div class="legend-box" style="background:#6a1b9a;">5</div> Answered &amp; Marked (will be evaluated)</div>
+    </div>
+
+    <h3>Important Declarations</h3>
+    <div class="consent-block">
+      <label>
+        <input type="checkbox" id="consent-check" onchange="document.getElementById('start-btn').disabled=!this.checked">
+        I have read and understood all the instructions. I hereby declare that I will abide by all the rules of this examination. I understand that any use of unfair means will result in disqualification.
+      </label>
+    </div>
+
+    <button class="start-btn" id="start-btn" disabled onclick="startExam()">I am ready to begin</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     EXAM SCREEN
+═════════════════════════════════════ -->
+<div id="exam-screen">
+  <div class="exam-header">
+    <div class="logo-sm">
+      <div class="badge">M</div>
+      <div>
+        <div class="title-sm">Mathematics Examination — Section A</div>
+        <div class="title-sub">SET A | Code: MTH-2526-A | 50 Questions</div>
+      </div>
+    </div>
+    <div class="timer-block">
+      <div class="timer-label">Time Remaining</div>
+      <div class="timer-value" id="timer">60:00</div>
+    </div>
+    <div class="candidate-info">
+      <div style="font-weight:700;">Candidate</div>
+      <div>Roll No: 240100001</div>
+      <div>Section A | Mathematics</div>
+    </div>
+  </div>
+
+  <div class="exam-subbar">
+    <div class="section-tab active">Section A — Mathematics</div>
+    <div class="q-count-info" id="q-count-info">Question 1 of 50</div>
+  </div>
+
+  <div class="exam-body">
+    <!-- Question Panel -->
+    <div class="question-panel" id="question-panel">
+      <div class="qp-header">
+        <div class="q-number-badge" id="q-badge">Q 1</div>
+        <span id="q-type-tag">Multiple Choice (Single Correct)</span>
+        <div class="marks-info">+5 Correct &nbsp;|&nbsp; −1 Wrong</div>
+      </div>
+      <div class="question-text" id="question-text">
+        <!-- populated by JS -->
+      </div>
+      <div class="options-area" id="options-area">
+        <!-- populated by JS -->
+      </div>
+      <div class="qp-footer">
+        <button class="btn btn-mark" onclick="markForReview()">🏷 Mark for Review &amp; Next</button>
+        <button class="btn btn-clear" onclick="clearResponse()">✕ Clear Response</button>
+        <button class="btn btn-save" onclick="saveAndNext()">✔ Save &amp; Next</button>
+        <button class="btn btn-prev" onclick="goTo(currentQ - 1)">◀ Previous</button>
+        <button class="btn btn-next" onclick="goTo(currentQ + 1)">Next ▶</button>
+        <button class="btn btn-submit-main" onclick="openSubmitModal()">Submit Paper</button>
+      </div>
+    </div>
+
+    <!-- Sidebar Palette -->
+    <div class="sidebar">
+      <div class="sidebar-header">Question Palette</div>
+      <div class="palette-legend">
+        <div class="pl-item"><div class="pl-dot dot-not-visited">&nbsp;</div>Not Visited</div>
+        <div class="pl-item"><div class="pl-dot dot-not-answered">&nbsp;</div>Not Answered</div>
+        <div class="pl-item"><div class="pl-dot dot-answered">&nbsp;</div>Answered</div>
+        <div class="pl-item"><div class="pl-dot dot-marked">&nbsp;</div>Marked</div>
+      </div>
+      <div class="palette-grid" id="palette-grid"></div>
+      <div class="sidebar-summary" id="sidebar-summary"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════
+     RESULT SCREEN
+═════════════════════════════════════ -->
+<div id="result-screen">
+  <div class="result-card">
+    <div class="result-header">
+      <h2>Examination Result — Section A</h2>
+      <p>Mathematics | SET A — MTH-2526-A | 2025–26</p>
+    </div>
+    <div class="score-strip" id="score-strip"></div>
+    <div class="percentile-bar-wrap">
+      <h4>Score Percentage</h4>
+      <div class="bar-bg"><div class="bar-fill" id="bar-fill" style="width:0%"><span id="bar-pct"></span></div></div>
+    </div>
+    <div class="review-table-wrap">
+      <h4>Detailed Response Sheet</h4>
+      <table class="review-table" id="review-table">
+        <thead>
+          <tr>
+            <th>Q.No</th>
+            <th>Question (Excerpt)</th>
+            <th>Your Answer</th>
+            <th>Correct Answer</th>
+            <th>Marks</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="review-tbody"></tbody>
+      </table>
+    </div>
+    <div class="result-footer">
+      <button class="btn-retry" onclick="retryExam()">↺ Retake Exam</button>
+    </div>
+  </div>
+</div>
+
+<!-- Submit Modal -->
+<div class="modal-overlay" id="submit-modal">
+  <div class="modal-box">
+    <div class="modal-head">⚠ Confirm Submission</div>
+    <div class="modal-body">
+      Are you sure you want to submit your answers? Once submitted, you cannot make any changes.
+      <div class="modal-stats" id="modal-stats"></div>
+      <strong>Note:</strong> All marked-for-review questions that have been answered will also be evaluated.
+    </div>
+    <div class="modal-footer">
+      <button class="btn-cancel-modal" onclick="closeSubmitModal()">Cancel — Go Back</button>
+      <button class="btn-confirm-submit" onclick="submitExam()">Yes, Submit Paper</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─────────────────────────────────────────────────
+// QUESTION BANK — 50 Original CUET-style questions
+// Topics: Relations/Functions, ITF, Matrices, Det,
+//   Continuity, Derivatives, Integrals, DEs,
+//   Vectors, 3D, LP, Probability
+// ─────────────────────────────────────────────────
+const questions = [
+  // 1
+  { text: "Let <em>f</em> : ℝ → ℝ be defined by <em>f</em>(<em>x</em>) = 3<em>x</em> + 5. Then <em>f</em> is:", options: ["One-one but not onto", "Onto but not one-one", "Both one-one and onto (bijective)", "Neither one-one nor onto"], answer: 2 },
+  // 2
+  { text: "The relation <em>R</em> on the set <em>A</em> = {1, 2, 3} defined by <em>R</em> = {(1,1),(2,2),(3,3),(1,2),(2,1)} is:", options: ["Reflexive and symmetric but not transitive", "Reflexive, symmetric and transitive (equivalence)", "Reflexive and transitive but not symmetric", "Symmetric and transitive but not reflexive"], answer: 1 },
+  // 3
+  { text: "If <em>f</em>(<em>x</em>) = <em>x</em>² and <em>g</em>(<em>x</em>) = √<em>x</em>, then <em>g</em>(<em>f</em>(<em>x</em>)) is equal to:", options: ["|<em>x</em>|", "<em>x</em>", "<em>x</em>²", "1/<em>x</em>"], answer: 0 },
+  // 4
+  { text: "The principal value of sin⁻¹(sin 7π/6) is:", options: ["7π/6", "–π/6", "π/6", "5π/6"], answer: 1 },
+  // 5
+  { text: "tan⁻¹(1) + cos⁻¹(–1/2) + sin⁻¹(–1/2) equals:", options: ["π", "3π/4", "5π/12", "7π/12"], answer: 0 },
+  // 6
+  { text: "If sin⁻¹(<em>x</em>) + sin⁻¹(<em>y</em>) = π/2, then <em>x</em>² + <em>y</em>² equals:", options: ["0", "1/2", "1", "2"], answer: 2 },
+  // 7
+  { text: "If <em>A</em> = [[2, 3],[1, 4]] and <em>B</em> = [[1, –1],[0, 2]], then <em>AB</em> is:", options: ["[[2, 4],[1, 7]]", "[[2, 4],[1, 7]]", "[[2, 4],[1, 7]]", "[[2, 4],[1, 7]]"], answer: 0,
+    text: "If <em>A</em> = <table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>2</td><td style='border:1px solid #333;padding:2px 6px;'>3</td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>1</td><td style='border:1px solid #333;padding:2px 6px;'>4</td></tr></table> and <em>B</em> = <table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>1</td><td style='border:1px solid #333;padding:2px 6px;'>−1</td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>0</td><td style='border:1px solid #333;padding:2px 6px;'>2</td></tr></table>, then the element in row 1, column 2 of <em>AB</em> is:",
+    options: ["4", "5", "7", "3"], answer: 0
+  },
+  // 8
+  { text: "If a matrix has 18 elements, which of the following cannot be the order of the matrix?", options: ["3 × 6", "1 × 18", "9 × 2", "4 × 5"], answer: 3 },
+  // 9
+  { text: "For the matrix <em>A</em> = [[1, 2],[3, 4]], <em>A</em> + <em>A</em><sup>T</sup> is:", options: ["[[2,5],[5,8]]", "[[0,−1],[1,0]]", "[[2,5],[5,8]]", "[[2,4],[6,8]]"], answer: 0,
+    text: "For the matrix <em>A</em> = <table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>1</td><td style='border:1px solid #333;padding:2px 6px;'>2</td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>3</td><td style='border:1px solid #333;padding:2px 6px;'>4</td></tr></table>, the matrix <em>A</em> + <em>A</em><sup>T</sup> is symmetric. The value of its (1,2) entry is:",
+    options: ["5", "4", "3", "6"], answer: 0
+  },
+  // 10
+  { text: "If |<em>A</em>| = 5 and <em>A</em> is a 3 × 3 matrix, then |adj(<em>A</em>)| equals:", options: ["5", "25", "125", "15"], answer: 1 },
+  // 11
+  { text: "If the determinant ∣∣ 2 &nbsp; <em>x</em> ∣∣ = 10, then <em>x</em> equals: (matrix: row1: 2,x ; row2: 3,5)", options: ["4/3", "10/3", "0", "2"], answer: 0,
+    text: "If det<table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>2</td><td style='border:1px solid #333;padding:2px 6px;'><em>x</em></td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>3</td><td style='border:1px solid #333;padding:2px 6px;'>5</td></tr></table> = 4, then the value of <em>x</em> is:",
+    options: ["2/3", "4/3", "1", "2"], answer: 0
+  },
+  // 12
+  { text: "If <em>A</em> is a square matrix such that <em>A</em>² = <em>A</em>, then (I + <em>A</em>)³ − 7<em>A</em> equals:", options: ["A", "I − A", "I", "0"], answer: 2 },
+  // 13
+  { text: "The function <em>f</em>(<em>x</em>) = |<em>x</em>| is:", options: ["Continuous and differentiable everywhere", "Continuous everywhere but not differentiable at <em>x</em> = 0", "Differentiable everywhere but not continuous at <em>x</em> = 0", "Neither continuous nor differentiable at <em>x</em> = 0"], answer: 1 },
+  // 14
+  { text: "If <em>y</em> = <em>e</em><sup><em>x</em> sin <em>x</em></sup>, then dy/dx is:", options: ["<em>e</em><sup><em>x</em> sin<em>x</em></sup>(sin<em>x</em> + <em>x</em>cos<em>x</em>)", "<em>e</em><sup><em>x</em></sup>(sin<em>x</em> + cos<em>x</em>)", "<em>e</em><sup>sin<em>x</em></sup>cos<em>x</em>", "<em>x</em><em>e</em><sup><em>x</em></sup>cos<em>x</em>"], answer: 0 },
+  // 15
+  { text: "If <em>y</em> = sin(log<em>x</em>), then d²y/dx² + dy/dx · (1/<em>x</em>) equals:", options: ["0", "–y/<em>x</em>²", "y/<em>x</em>²", "cos(log<em>x</em>)/<em>x</em>²"], answer: 1 },
+  // 16
+  { text: "The slope of the tangent to the curve <em>y</em> = <em>x</em>³ − <em>x</em> at the point where <em>x</em> = 2 is:", options: ["11", "12", "10", "13"], answer: 0 },
+  // 17
+  { text: "The function <em>f</em>(<em>x</em>) = 2<em>x</em>³ − 9<em>x</em>² + 12<em>x</em> + 1 is strictly increasing on:", options: ["(−∞, 1) ∪ (2, ∞)", "(1, 2)", "(0, ∞)", "(−∞, ∞)"], answer: 0 },
+  // 18
+  { text: "The maximum value of <em>f</em>(<em>x</em>) = sin<em>x</em> + cos<em>x</em> on [0, π] is:", options: ["1", "√2", "2", "√3/2"], answer: 1 },
+  // 19
+  { text: "∫ (2<em>x</em> + 3) / (<em>x</em>² + 3<em>x</em> + 5) d<em>x</em> equals:", options: ["log|<em>x</em>² + 3<em>x</em> + 5| + C", "2log|<em>x</em>² + 3<em>x</em> + 5| + C", "(1/2)log|<em>x</em>² + 3<em>x</em> + 5| + C", "1/(<em>x</em>² + 3<em>x</em> + 5) + C"], answer: 0 },
+  // 20
+  { text: "∫₀<sup>π/2</sup> sin²<em>x</em> d<em>x</em> equals:", options: ["π/4", "π/2", "0", "1"], answer: 0 },
+  // 21
+  { text: "∫ e<sup><em>x</em></sup>(sin<em>x</em> + cos<em>x</em>) d<em>x</em> equals:", options: ["e<sup><em>x</em></sup>sin<em>x</em> + C", "e<sup><em>x</em></sup>cos<em>x</em> + C", "e<sup><em>x</em></sup>(sin<em>x</em> − cos<em>x</em>) + C", "2e<sup><em>x</em></sup>sin<em>x</em> + C"], answer: 0 },
+  // 22
+  { text: "The area enclosed between <em>y</em> = <em>x</em>² and <em>y</em> = <em>x</em> (in the first quadrant) is:", options: ["1/6 sq. units", "1/3 sq. units", "1/2 sq. units", "2/3 sq. units"], answer: 0 },
+  // 23
+  { text: "The integrating factor of the differential equation dy/dx + (<em>y</em>/<em>x</em>) = <em>x</em>² is:", options: ["<em>x</em>", "1/<em>x</em>", "<em>x</em>²", "log<em>x</em>"], answer: 0 },
+  // 24
+  { text: "The order and degree of the differential equation [1 + (dy/dx)²]<sup>3/2</sup> = d²y/dx² are respectively:", options: ["2 and 3", "2 and 2", "1 and 3", "3 and 2"], answer: 1 },
+  // 25
+  { text: "The general solution of dy/dx = <em>e</em><sup><em>x</em>+<em>y</em></sup> is:", options: ["<em>e</em><sup>−<em>y</em></sup> + <em>e</em><sup><em>x</em></sup> = C", "<em>e</em><sup><em>x</em></sup> − <em>e</em><sup>−<em>y</em></sup> = C", "<em>e</em><sup><em>x</em></sup> + <em>e</em><sup><em>y</em></sup> = C", "e<sup>−<em>y</em></sup> = e<sup><em>x</em></sup> + C"], answer: 3 },
+  // 26
+  { text: "If <b>a</b> = 2<b>î</b> − 3<b>ĵ</b> + <b>k̂</b> and <b>b</b> = <b>î</b> + 2<b>ĵ</b> − 3<b>k̂</b>, then <b>a</b> · <b>b</b> is:", options: ["−6", "−8", "−5", "0"], answer: 1,
+    text: "If <strong>a⃗</strong> = 2<strong>î</strong> − 3<strong>ĵ</strong> + <strong>k̂</strong> and <strong>b⃗</strong> = <strong>î</strong> + 2<strong>ĵ</strong> − 3<strong>k̂</strong>, then <strong>a⃗</strong> · <strong>b⃗</strong> is:",
+    options: ["−6", "−8", "−5", "0"], answer: 1
+  },
+  // 27
+  { text: "The projection of <strong>a⃗</strong> = 2<strong>î</strong> + 3<strong>ĵ</strong> + 2<strong>k̂</strong> on <strong>b⃗</strong> = <strong>î</strong> + 2<strong>ĵ</strong> + 2<strong>k̂</strong> is:", options: ["10/3", "4/3", "14/3", "3"], answer: 0 },
+  // 28
+  { text: "If |<strong>a⃗</strong>| = 3, |<strong>b⃗</strong>| = 4 and <strong>a⃗</strong> · <strong>b⃗</strong> = 6, then the angle between <strong>a⃗</strong> and <strong>b⃗</strong> is:", options: ["π/6", "π/3", "π/4", "π/2"], answer: 1 },
+  // 29
+  { text: "<strong>a⃗</strong> × <strong>b⃗</strong> = <strong>b⃗</strong> × <strong>a⃗</strong> is:", options: ["Always true", "True only when <strong>a⃗</strong> = <strong>b⃗</strong>", "Never true; <strong>a⃗</strong> × <strong>b⃗</strong> = −(<strong>b⃗</strong> × <strong>a⃗</strong>)", "True when they are parallel"], answer: 2 },
+  // 30
+  { text: "The area of the triangle with vertices A(1,1,1), B(1,2,3) and C(2,3,1) using cross product is:", options: ["√17/2", "√21/2", "√14/2", "√10/2"], answer: 1 },
+  // 31
+  { text: "The direction cosines of the line joining (1, 0, 0) and (0, 1, 0) are:", options: ["(−1/√2, 1/√2, 0)", "(1, −1, 0)", "(1/√2, −1/√2, 0)", "(0, 0, 1)"], answer: 0 },
+  // 32
+  { text: "The equation of the line passing through (2, −1, 3) with direction ratios (1, 2, −2) in symmetric form is:", options: ["(x−2)/1 = (y+1)/2 = (z−3)/(−2)", "(x+2)/1 = (y−1)/2 = (z+3)/(−2)", "(x−2)/2 = (y+1)/1 = (z−3)/3", "None of these"], answer: 0 },
+  // 33
+  { text: "The angle between the lines with direction ratios (1, 1, 0) and (0, 1, 1) is:", options: ["60°", "45°", "90°", "30°"], answer: 0 },
+  // 34
+  { text: "The distance from the point (3, −5, 12) to the <em>xy</em>-plane is:", options: ["3", "5", "12", "√178"], answer: 2 },
+  // 35
+  { text: "The equation of the plane passing through (1, 2, 3) with normal vector (2, −1, 1) is:", options: ["2<em>x</em> − <em>y</em> + <em>z</em> = 3", "2<em>x</em> − <em>y</em> + <em>z</em> = 0", "<em>x</em> + 2<em>y</em> + 3<em>z</em> = 14", "2<em>x</em> − <em>y</em> + <em>z</em> + 3 = 0"], answer: 0 },
+  // 36
+  { text: "In a Linear Programming Problem, the feasible region is always:", options: ["A circle", "A convex polygon (or unbounded convex set)", "A concave region", "A single point"], answer: 1 },
+  // 37
+  { text: "The corner points of the feasible region of an LPP are (0,0), (4,0), (3,2) and (0,3). The maximum value of <em>Z</em> = 3<em>x</em> + 5<em>y</em> is:", options: ["12", "18", "19", "15"], answer: 2 },
+  // 38
+  { text: "Which of the following is NOT a necessary condition for a Linear Programming Problem?", options: ["Objective function must be linear", "Constraints must be linear inequalities", "Decision variables must be non-negative", "Optimal solution must occur at the origin"], answer: 3 },
+  // 39
+  { text: "Two dice are thrown simultaneously. The probability of getting a sum of 9 is:", options: ["1/9", "4/36", "1/6", "5/36"], answer: 1 },
+  // 40
+  { text: "If P(A) = 1/3, P(B) = 1/4 and A and B are independent events, then P(A ∩ B) equals:", options: ["7/12", "1/12", "5/12", "1/2"], answer: 1 },
+  // 41
+  { text: "A bag contains 4 red and 5 black balls. Two balls are drawn at random. The probability that both are red is:", options: ["1/6", "2/9", "4/9", "5/18"], answer: 0 },
+  // 42
+  { text: "Using Bayes' theorem: P(A) = 0.4, P(B|A) = 0.5, P(B|A′) = 0.2. Then P(A|B) equals:", options: ["0.5", "2/3", "1/3", "0.4"], answer: 1 },
+  // 43
+  { text: "The mean of a Binomial distribution B(n, p) is 6 and variance is 2. Then n and p are respectively:", options: ["9 and 2/3", "6 and 1/3", "12 and 1/2", "8 and 3/4"], answer: 0 },
+  // 44
+  { text: "If <em>f</em>(<em>x</em>) = k(<em>x</em> − <em>x</em>²) for 0 ≤ x ≤ 1 is a probability density function, then k equals:", options: ["2", "6", "3", "12"], answer: 1 },
+  // 45
+  { text: "∫ dx / (1 + x²) equals:", options: ["tan⁻¹<em>x</em> + C", "sin⁻¹<em>x</em> + C", "sec⁻¹<em>x</em> + C", "cot⁻¹<em>x</em> + C"], answer: 0 },
+  // 46
+  { text: "The value of ∫₋₁¹ <em>x</em> |<em>x</em>| d<em>x</em> is:", options: ["0", "2/3", "−2/3", "4/3"], answer: 0 },
+  // 47
+  { text: "If <em>f</em>(<em>x</em>) = (1 + cos²<em>x</em>) / sin²<em>x</em>, then <em>f</em> is:", options: ["Continuous everywhere", "Discontinuous at <em>x</em> = nπ", "Discontinuous at <em>x</em> = nπ/2", "Continuous for all <em>x</em> ∈ (0, π)"], answer: 1 },
+  // 48
+  { text: "If <em>A</em> and <em>B</em> are two events such that P(A ∪ B) = 3/4, P(A ∩ B) = 1/4, P(Ā) = 2/3, then P(B) is:", options: ["1/3", "5/12", "7/12", "2/3"], answer: 2 },
+  // 49
+  { text: "The number of all possible matrices of order 2 × 2 with each entry 0 or 1 is:", options: ["8", "12", "16", "6"], answer: 2 },
+  // 50
+  { text: "If <em>y</em> = (sin<em>x</em>)<sup>cos<em>x</em></sup>, then dy/dx is:", options: ["(sin<em>x</em>)<sup>cos<em>x</em></sup>[cos<em>x</em>·cot<em>x</em> − sin<em>x</em>·log(sin<em>x</em>)]", "(sin<em>x</em>)<sup>cos<em>x</em></sup>[cos²<em>x</em>/sin<em>x</em> − sin<em>x</em>·log(sin<em>x</em>)]", "cos<em>x</em>·(sin<em>x</em>)<sup>cos<em>x</em>−1</sup>·cos<em>x</em>", "(sin<em>x</em>)<sup>cos<em>x</em></sup>·cos<em>x</em>·cot<em>x</em>"], answer: 0 },
+];
+
+// ─────────────────────────────────────────────────
+// STATE
+// ─────────────────────────────────────────────────
+let currentQ = 0;
+let totalTime = 60 * 60; // seconds
+let timerInterval = null;
+const state = questions.map(() => ({
+  status: 'not-visited', // not-visited | not-answered | answered | marked | marked-answered
+  selected: null
+}));
+
+// ─────────────────────────────────────────────────
+// EXAM START
+// ─────────────────────────────────────────────────
+function startExam() {
+  document.getElementById('instruction-screen').style.display = 'none';
+  document.getElementById('exam-screen').style.display = 'flex';
+  buildPalette();
+  goTo(0);
+  startTimer();
+}
+
+function startTimer() {
+  timerInterval = setInterval(() => {
+    totalTime--;
+    if (totalTime <= 0) {
+      clearInterval(timerInterval);
+      submitExam();
+      return;
+    }
+    updateTimerDisplay();
+  }, 1000);
+  updateTimerDisplay();
+}
+
+function updateTimerDisplay() {
+  const m = Math.floor(totalTime / 60);
+  const s = totalTime % 60;
+  const el = document.getElementById('timer');
+  el.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+  el.className = 'timer-value';
+  if (totalTime <= 300) el.classList.add('danger');
+  else if (totalTime <= 600) el.classList.add('warning');
+}
+
+// ─────────────────────────────────────────────────
+// NAVIGATION
+// ─────────────────────────────────────────────────
+function goTo(idx) {
+  if (idx < 0 || idx >= questions.length) return;
+  if (state[currentQ].status === 'not-visited') {
+    state[currentQ].status = 'not-answered';
+  }
+  currentQ = idx;
+  if (state[currentQ].status === 'not-visited') {
+    state[currentQ].status = 'not-answered';
+  }
+  renderQuestion();
+  updatePalette();
+  updateSummary();
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  const st = state[currentQ];
+
+  document.getElementById('q-badge').textContent = 'Q ' + (currentQ + 1);
+  document.getElementById('q-count-info').textContent = 'Question ' + (currentQ + 1) + ' of ' + questions.length;
+
+  document.getElementById('question-text').innerHTML =
+    '<span class="q-label">Q' + (currentQ + 1) + '.</span> ' + q.text;
+
+  const optArea = document.getElementById('options-area');
+  const labels = ['A', 'B', 'C', 'D'];
+  optArea.innerHTML = q.options.map((opt, i) =>
+    `<div class="option-item ${st.selected === i ? 'selected' : ''}" onclick="selectOption(${i})">
+      <input type="radio" name="opt" value="${i}" ${st.selected === i ? 'checked' : ''} onchange="selectOption(${i})">
+      <span class="option-label">${labels[i]}.</span>
+      <span class="option-text">${opt}</span>
+    </div>`
+  ).join('');
+}
+
+function selectOption(idx) {
+  state[currentQ].selected = idx;
+  // visually update
+  document.querySelectorAll('.option-item').forEach((el, i) => {
+    el.classList.toggle('selected', i === idx);
+    el.querySelector('input').checked = (i === idx);
+  });
+}
+
+// ─────────────────────────────────────────────────
+// ACTIONS
+// ─────────────────────────────────────────────────
+function saveAndNext() {
+  const st = state[currentQ];
+  if (st.selected !== null) {
+    st.status = (st.status === 'marked' || st.status === 'marked-answered') ? 'marked-answered' : 'answered';
+  } else {
+    st.status = 'not-answered';
+  }
+  updatePalette();
+  updateSummary();
+  if (currentQ < questions.length - 1) goTo(currentQ + 1);
+}
+
+function markForReview() {
+  const st = state[currentQ];
+  st.status = (st.selected !== null) ? 'marked-answered' : 'marked';
+  updatePalette();
+  updateSummary();
+  if (currentQ < questions.length - 1) goTo(currentQ + 1);
+}
+
+function clearResponse() {
+  state[currentQ].selected = null;
+  state[currentQ].status = 'not-answered';
+  document.querySelectorAll('.option-item').forEach(el => {
+    el.classList.remove('selected');
+    el.querySelector('input').checked = false;
+  });
+  updatePalette();
+  updateSummary();
+}
+
+// ─────────────────────────────────────────────────
+// PALETTE
+// ─────────────────────────────────────────────────
+function buildPalette() {
+  const grid = document.getElementById('palette-grid');
+  grid.innerHTML = questions.map((_, i) =>
+    `<button class="palette-btn not-visited" id="pb${i}" onclick="goTo(${i})">${i+1}</button>`
+  ).join('');
+}
+
+function updatePalette() {
+  questions.forEach((_, i) => {
+    const btn = document.getElementById('pb' + i);
+    btn.className = 'palette-btn ' + state[i].status.replace('-','‑');
+    // fix class names
+    btn.className = 'palette-btn ' + {
+      'not-visited': 'not-visited',
+      'not-answered': 'not-answered',
+      'answered': 'answered',
+      'marked': 'marked',
+      'marked-answered': 'marked-answered'
+    }[state[i].status];
+    btn.classList.toggle('active-q', i === currentQ);
+  });
+}
+
+function updateSummary() {
+  const counts = { answered: 0, 'not-answered': 0, 'not-visited': 0, marked: 0, 'marked-answered': 0 };
+  state.forEach(s => counts[s.status]++);
+  document.getElementById('sidebar-summary').innerHTML = `
+    <div class="summary-row"><span>✅ Answered</span><span>${counts.answered}</span></div>
+    <div class="summary-row"><span>❌ Not Answered</span><span>${counts['not-answered']}</span></div>
+    <div class="summary-row"><span>⬜ Not Visited</span><span>${counts['not-visited']}</span></div>
+    <div class="summary-row"><span>🏷 Marked</span><span>${counts.marked + counts['marked-answered']}</span></div>
+  `;
+}
+
+// ─────────────────────────────────────────────────
+// SUBMIT MODAL
+// ─────────────────────────────────────────────────
+function openSubmitModal() {
+  const counts = { answered: 0, notAnswered: 0, notVisited: 0, marked: 0 };
+  state.forEach(s => {
+    if (s.status === 'answered' || s.status === 'marked-answered') counts.answered++;
+    else if (s.status === 'not-visited') counts.notVisited++;
+    else counts.notAnswered++;
+    if (s.status === 'marked' || s.status === 'marked-answered') counts.marked++;
+  });
+  document.getElementById('modal-stats').innerHTML = `
+    <div><span>✅ Attempted</span><span><strong>${counts.answered}</strong> / 50</span></div>
+    <div><span>❌ Not Answered</span><span><strong>${counts.notAnswered}</strong></span></div>
+    <div><span>⬜ Not Visited</span><span><strong>${counts.notVisited}</strong></span></div>
+    <div><span>🏷 Marked for Review</span><span><strong>${counts.marked}</strong></span></div>
+  `;
+  document.getElementById('submit-modal').classList.add('show');
+}
+
+function closeSubmitModal() {
+  document.getElementById('submit-modal').classList.remove('show');
+}
+
+// ─────────────────────────────────────────────────
+// SUBMIT EXAM
+// ─────────────────────────────────────────────────
+function submitExam() {
+  clearInterval(timerInterval);
+  closeSubmitModal();
+
+  let correct = 0, wrong = 0, skipped = 0, marks = 0;
+  const tbody = document.getElementById('review-tbody');
+  tbody.innerHTML = '';
+
+  questions.forEach((q, i) => {
+    const s = state[i];
+    const attempted = s.selected !== null && (s.status === 'answered' || s.status === 'marked-answered');
+    const labels = ['A','B','C','D'];
+
+    let status, rowClass, badge;
+    if (!attempted) {
+      skipped++;
+      status = 'Skipped';
+      rowClass = 'rt-skip';
+      badge = '<span class="rt-badge badge-s">SKIPPED</span>';
+    } else if (s.selected === q.answer) {
+      correct++;
+      marks += 5;
+      status = 'Correct';
+      rowClass = 'rt-correct';
+      badge = '<span class="rt-badge badge-c">CORRECT +5</span>';
+    } else {
+      wrong++;
+      marks -= 1;
+      status = 'Incorrect';
+      rowClass = 'rt-wrong';
+      badge = '<span class="rt-badge badge-w">WRONG −1</span>';
+    }
+
+    const qText = q.text.replace(/<[^>]*>/g,'').substring(0,60) + '…';
+    const yourAns = attempted ? labels[s.selected] : '—';
+    const corrAns = labels[q.answer];
+
+    tbody.innerHTML += `
+      <tr>
+        <td><strong>${i+1}</strong></td>
+        <td style="max-width:260px;font-size:12px;">${qText}</td>
+        <td class="${rowClass}">${yourAns}</td>
+        <td class="rt-correct">${corrAns}</td>
+        <td class="${rowClass}">${attempted ? (s.selected === q.answer ? '+5' : '−1') : '0'}</td>
+        <td>${badge}</td>
+      </tr>`;
+  });
+
+  // Score strip
+  const pct = Math.max(0, (marks / 250) * 100).toFixed(1);
+  document.getElementById('score-strip').innerHTML = `
+    <div class="score-item"><div class="score-num marks">${marks}</div><div class="score-label">Total Score</div></div>
+    <div class="score-item"><div class="score-num correct">${correct}</div><div class="score-label">Correct</div></div>
+    <div class="score-item"><div class="score-num wrong">${wrong}</div><div class="score-label">Incorrect</div></div>
+    <div class="score-item"><div class="score-num skipped">${skipped}</div><div class="score-label">Skipped</div></div>
+    <div class="score-item"><div class="score-num" style="color:#e87722;">${(correct/50*100).toFixed(1)}%</div><div class="score-label">Accuracy</div></div>
+  `;
+  document.getElementById('bar-fill').style.width = pct + '%';
+  document.getElementById('bar-pct').textContent = pct + '%';
+
+  document.getElementById('exam-screen').style.display = 'none';
+  document.getElementById('result-screen').style.display = 'block';
+  window.scrollTo(0,0);
+  setTimeout(() => {
+    document.getElementById('bar-fill').style.width = pct + '%';
+  }, 100);
+}
+
+function retryExam() {
+  location.reload();
+}
+</script>
+</body>
+</html>

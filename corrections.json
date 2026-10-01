@@ -1,0 +1,20 @@
+[
+  {
+    "number": 1,
+    "text": "Let <em>f</em> : \u211d \u2192 \u211d be defined by <em>f</em>(<em>x</em>) = 3<em>x</em> + 5. Then <em>f</em> is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 2,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 11,
+    "text": "If det<table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>2</td><td style='border:1px solid #333;padding:2px 6px;'><em>x</em></td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>3</td><td style='border:1px solid #333;padding:2px 6px;'>5</td></tr></table> = 4, then the value of <em>x</em> is:",
+    "status": "BAD_KEY",
+    "source_ans": 0,
+    "math_ans": 3,
+    "all_matches": [
+      3
+    ]
+  }
+]
