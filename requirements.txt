@@ -1,0 +1,5 @@
+sympy
+pytesseract
+opencv-python
+Pillow
+pix2tex

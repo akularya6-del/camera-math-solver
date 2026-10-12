@@ -8,13 +8,407 @@
     "all_matches": []
   },
   {
+    "number": 2,
+    "text": "The relation <em>R</em> on the set <em>A</em> = {1, 2, 3} defined by <em>R</em> = {(1,1),(2,2),(3,3),(1,2),(2,1)} is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 3,
+    "text": "If <em>f</em>(<em>x</em>) = <em>x</em>\u00b2 and <em>g</em>(<em>x</em>) = \u221a<em>x</em>, then <em>g</em>(<em>f</em>(<em>x</em>)) is equal to:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 4,
+    "text": "The principal value of sin\u207b\u00b9(sin 7\u03c0/6) is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 5,
+    "text": "tan\u207b\u00b9(1) + cos\u207b\u00b9(\u20131/2) + sin\u207b\u00b9(\u20131/2) equals:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 6,
+    "text": "If sin\u207b\u00b9(<em>x</em>) + sin\u207b\u00b9(<em>y</em>) = \u03c0/2, then <em>x</em>\u00b2 + <em>y</em>\u00b2 equals:",
+    "status": "BAD_KEY",
+    "source_ans": 2,
+    "math_ans": 0,
+    "all_matches": [
+      0
+    ]
+  },
+  {
+    "number": 7,
+    "text": "If <em>A</em> = <table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>2</td><td style='border:1px solid #333;padding:2px 6px;'>3</td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>1</td><td style='border:1px solid #333;padding:2px 6px;'>4</td></tr></table> and <em>B</em> = <table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>1</td><td style='border:1px solid #333;padding:2px 6px;'>\u22121</td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>0</td><td style='border:1px solid #333;padding:2px 6px;'>2</td></tr></table>, then the element in row 1, column 2 of <em>AB</em> is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 8,
+    "text": "If a matrix has 18 elements, which of the following cannot be the order of the matrix?",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 3,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 9,
+    "text": "For the matrix <em>A</em> = <table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>1</td><td style='border:1px solid #333;padding:2px 6px;'>2</td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>3</td><td style='border:1px solid #333;padding:2px 6px;'>4</td></tr></table>, the matrix <em>A</em> + <em>A</em><sup>T</sup> is symmetric. The value of its (1,2) entry is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 10,
+    "text": "If |<em>A</em>| = 5 and <em>A</em> is a 3 \u00d7 3 matrix, then |adj(<em>A</em>)| equals:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
     "number": 11,
     "text": "If det<table style='display:inline-table;border-collapse:collapse;vertical-align:middle;'><tr><td style='border:1px solid #333;padding:2px 6px;'>2</td><td style='border:1px solid #333;padding:2px 6px;'><em>x</em></td></tr><tr><td style='border:1px solid #333;padding:2px 6px;'>3</td><td style='border:1px solid #333;padding:2px 6px;'>5</td></tr></table> = 4, then the value of <em>x</em> is:",
-    "status": "BAD_KEY",
+    "status": "NO_VALID_OPTION",
     "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 12,
+    "text": "If <em>A</em> is a square matrix such that <em>A</em>\u00b2 = <em>A</em>, then (I + <em>A</em>)\u00b3 \u2212 7<em>A</em> equals:",
+    "status": "BAD_KEY",
+    "source_ans": 2,
     "math_ans": 3,
     "all_matches": [
       3
     ]
+  },
+  {
+    "number": 13,
+    "text": "The function <em>f</em>(<em>x</em>) = |<em>x</em>| is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 14,
+    "text": "If <em>y</em> = <em>e</em><sup><em>x</em> sin <em>x</em></sup>, then dy/dx is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 15,
+    "text": "If <em>y</em> = sin(log<em>x</em>), then d\u00b2y/dx\u00b2 + dy/dx \u00b7 (1/<em>x</em>) equals:",
+    "status": "BAD_KEY",
+    "source_ans": 1,
+    "math_ans": 3,
+    "all_matches": [
+      3
+    ]
+  },
+  {
+    "number": 16,
+    "text": "The slope of the tangent to the curve <em>y</em> = <em>x</em>\u00b3 \u2212 <em>x</em> at the point where <em>x</em> = 2 is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 17,
+    "text": "The function <em>f</em>(<em>x</em>) = 2<em>x</em>\u00b3 \u2212 9<em>x</em>\u00b2 + 12<em>x</em> + 1 is strictly increasing on:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 18,
+    "text": "The maximum value of <em>f</em>(<em>x</em>) = sin<em>x</em> + cos<em>x</em> on [0, \u03c0] is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 19,
+    "text": "\u222b (2<em>x</em> + 3) / (<em>x</em>\u00b2 + 3<em>x</em> + 5) d<em>x</em> equals:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 20,
+    "text": "\u222b\u2080<sup>\u03c0/2</sup> sin\u00b2<em>x</em> d<em>x</em> equals:",
+    "status": "BAD_KEY",
+    "source_ans": 0,
+    "math_ans": 2,
+    "all_matches": [
+      2
+    ]
+  },
+  {
+    "number": 21,
+    "text": "\u222b e<sup><em>x</em></sup>(sin<em>x</em> + cos<em>x</em>) d<em>x</em> equals:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 22,
+    "text": "The area enclosed between <em>y</em> = <em>x</em>\u00b2 and <em>y</em> = <em>x</em> (in the first quadrant) is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 23,
+    "text": "The integrating factor of the differential equation dy/dx + (<em>y</em>/<em>x</em>) = <em>x</em>\u00b2 is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 24,
+    "text": "The order and degree of the differential equation [1 + (dy/dx)\u00b2]<sup>3/2</sup> = d\u00b2y/dx\u00b2 are respectively:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 25,
+    "text": "The general solution of dy/dx = <em>e</em><sup><em>x</em>+<em>y</em></sup> is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 3,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 26,
+    "text": "If <strong>a\u20d7</strong> = 2<strong>\u00ee</strong> \u2212 3<strong>\u0135</strong> + <strong>k\u0302</strong> and <strong>b\u20d7</strong> = <strong>\u00ee</strong> + 2<strong>\u0135</strong> \u2212 3<strong>k\u0302</strong>, then <strong>a\u20d7</strong> \u00b7 <strong>b\u20d7</strong> is:",
+    "status": "BAD_KEY",
+    "source_ans": 1,
+    "math_ans": 3,
+    "all_matches": [
+      3
+    ]
+  },
+  {
+    "number": 27,
+    "text": "The projection of <strong>a\u20d7</strong> = 2<strong>\u00ee</strong> + 3<strong>\u0135</strong> + 2<strong>k\u0302</strong> on <strong>b\u20d7</strong> = <strong>\u00ee</strong> + 2<strong>\u0135</strong> + 2<strong>k\u0302</strong> is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 28,
+    "text": "If |<strong>a\u20d7</strong>| = 3, |<strong>b\u20d7</strong>| = 4 and <strong>a\u20d7</strong> \u00b7 <strong>b\u20d7</strong> = 6, then the angle between <strong>a\u20d7</strong> and <strong>b\u20d7</strong> is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 29,
+    "text": "<strong>a\u20d7</strong> \u00d7 <strong>b\u20d7</strong> = <strong>b\u20d7</strong> \u00d7 <strong>a\u20d7</strong> is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 2,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 30,
+    "text": "The area of the triangle with vertices A(1,1,1), B(1,2,3) and C(2,3,1) using cross product is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 31,
+    "text": "The direction cosines of the line joining (1, 0, 0) and (0, 1, 0) are:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 32,
+    "text": "The equation of the line passing through (2, \u22121, 3) with direction ratios (1, 2, \u22122) in symmetric form is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 33,
+    "text": "The angle between the lines with direction ratios (1, 1, 0) and (0, 1, 1) is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 34,
+    "text": "The distance from the point (3, \u22125, 12) to the <em>xy</em>-plane is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 2,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 35,
+    "text": "The equation of the plane passing through (1, 2, 3) with normal vector (2, \u22121, 1) is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 36,
+    "text": "In a Linear Programming Problem, the feasible region is always:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 37,
+    "text": "The corner points of the feasible region of an LPP are (0,0), (4,0), (3,2) and (0,3). The maximum value of <em>Z</em> = 3<em>x</em> + 5<em>y</em> is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 2,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 38,
+    "text": "Which of the following is NOT a necessary condition for a Linear Programming Problem?",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 3,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 39,
+    "text": "Two dice are thrown simultaneously. The probability of getting a sum of 9 is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 40,
+    "text": "If P(A) = 1/3, P(B) = 1/4 and A and B are independent events, then P(A \u2229 B) equals:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 41,
+    "text": "A bag contains 4 red and 5 black balls. Two balls are drawn at random. The probability that both are red is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 42,
+    "text": "Using Bayes' theorem: P(A) = 0.4, P(B|A) = 0.5, P(B|A\u2032) = 0.2. Then P(A|B) equals:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 43,
+    "text": "The mean of a Binomial distribution B(n, p) is 6 and variance is 2. Then n and p are respectively:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 44,
+    "text": "If <em>f</em>(<em>x</em>) = k(<em>x</em> \u2212 <em>x</em>\u00b2) for 0 \u2264 x \u2264 1 is a probability density function, then k equals:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 45,
+    "text": "\u222b dx / (1 + x\u00b2) equals:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 46,
+    "text": "The value of \u222b\u208b\u2081\u00b9 <em>x</em> |<em>x</em>| d<em>x</em> is:",
+    "status": "VALID",
+    "source_ans": 0,
+    "math_ans": 0,
+    "all_matches": [
+      0
+    ]
+  },
+  {
+    "number": 47,
+    "text": "If <em>f</em>(<em>x</em>) = (1 + cos\u00b2<em>x</em>) / sin\u00b2<em>x</em>, then <em>f</em> is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 1,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 48,
+    "text": "If <em>A</em> and <em>B</em> are two events such that P(A \u222a B) = 3/4, P(A \u2229 B) = 1/4, P(\u0100) = 2/3, then P(B) is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 2,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 49,
+    "text": "The number of all possible matrices of order 2 \u00d7 2 with each entry 0 or 1 is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 2,
+    "math_ans": -1,
+    "all_matches": []
+  },
+  {
+    "number": 50,
+    "text": "If <em>y</em> = (sin<em>x</em>)<sup>cos<em>x</em></sup>, then dy/dx is:",
+    "status": "NO_VALID_OPTION",
+    "source_ans": 0,
+    "math_ans": -1,
+    "all_matches": []
   }
 ]
